@@ -1,4 +1,4 @@
-package vistas.vectores;
+package vectores;
 import java.util.Scanner;
 public class vectores1 {
     
