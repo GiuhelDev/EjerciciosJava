@@ -31,6 +31,7 @@ public class CalculoInteres extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtperiodos = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        btnInicio = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtresultado = new javax.swing.JTextArea();
@@ -53,6 +54,13 @@ public class CalculoInteres extends javax.swing.JFrame {
             }
         });
 
+        btnInicio.setText("Menu Principal");
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout btnprocesaarLayout = new javax.swing.GroupLayout(btnprocesaar);
         btnprocesaar.setLayout(btnprocesaarLayout);
         btnprocesaarLayout.setHorizontalGroup(
@@ -66,7 +74,8 @@ public class CalculoInteres extends javax.swing.JFrame {
                     .addComponent(txtcapital)
                     .addComponent(txttasa)
                     .addComponent(txtperiodos)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                    .addComponent(btnInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         btnprocesaarLayout.setVerticalGroup(
@@ -86,7 +95,9 @@ public class CalculoInteres extends javax.swing.JFrame {
                 .addComponent(txtperiodos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnInicio)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -148,6 +159,13 @@ public class CalculoInteres extends javax.swing.JFrame {
         txtresultado.append("Interes: "+String.format("%8.2f\n", interes));
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        // TODO add your handling code here:
+        menuPrincipal frm=new menuPrincipal();
+        frm.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnInicioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -184,6 +202,7 @@ public class CalculoInteres extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnInicio;
     private javax.swing.JPanel btnprocesaar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

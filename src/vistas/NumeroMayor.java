@@ -35,6 +35,7 @@ public class NumeroMayor extends javax.swing.JFrame {
         txtresultado = new javax.swing.JTextArea();
         txtcantidad = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        btnmenuprincipal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -56,6 +57,13 @@ public class NumeroMayor extends javax.swing.JFrame {
 
         jLabel2.setText("Cantidad:");
 
+        btnmenuprincipal.setText("menu Principal");
+        btnmenuprincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmenuprincipalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,7 +72,10 @@ public class NumeroMayor extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEmpezar)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnmenuprincipal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEmpezar))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,10 +97,12 @@ public class NumeroMayor extends javax.swing.JFrame {
                     .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEmpezar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEmpezar)
+                    .addComponent(btnmenuprincipal))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -110,6 +123,13 @@ public class NumeroMayor extends javax.swing.JFrame {
         txtresultado.setText("El numero mayor es :"+ mayor);
         
     }//GEN-LAST:event_btnEmpezarActionPerformed
+
+    private void btnmenuprincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmenuprincipalActionPerformed
+        // TODO add your handling code here:
+        menuPrincipal frm=new menuPrincipal();
+         frm.setVisible(true);
+         dispose();
+    }//GEN-LAST:event_btnmenuprincipalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,6 +168,12 @@ public class NumeroMayor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEmpezar;
+    private javax.swing.JButton btnInicio;
+    private javax.swing.JButton btnInicio1;
+    private javax.swing.JButton btnInicio2;
+    private javax.swing.JButton btnInicio3;
+    private javax.swing.JButton btnInicio4;
+    private javax.swing.JButton btnmenuprincipal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

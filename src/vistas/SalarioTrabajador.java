@@ -43,6 +43,7 @@ public class SalarioTrabajador extends javax.swing.JFrame {
         txtnombre = new javax.swing.JTextField();
         txttrabajadas = new javax.swing.JTextField();
         txtpago = new javax.swing.JTextField();
+        btnMenuprincipal = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtresultado = new javax.swing.JTextArea();
 
@@ -77,6 +78,13 @@ public class SalarioTrabajador extends javax.swing.JFrame {
             }
         });
 
+        btnMenuprincipal.setText("Menu Principal");
+        btnMenuprincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuprincipalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -88,8 +96,11 @@ public class SalarioTrabajador extends javax.swing.JFrame {
                         .addComponent(rbmensual)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rbAnual)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
-                        .addComponent(btnprocesar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnprocesar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnMenuprincipal)
+                        .addGap(0, 51, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -124,7 +135,8 @@ public class SalarioTrabajador extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbmensual)
                     .addComponent(rbAnual)
-                    .addComponent(btnprocesar))
+                    .addComponent(btnprocesar)
+                    .addComponent(btnMenuprincipal))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -193,6 +205,13 @@ public class SalarioTrabajador extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnprocesarActionPerformed
 
+    private void btnMenuprincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuprincipalActionPerformed
+        // TODO add your handling code here:
+        menuPrincipal frm=new menuPrincipal();
+         frm.setVisible(true);
+         dispose();
+    }//GEN-LAST:event_btnMenuprincipalActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -229,6 +248,8 @@ public class SalarioTrabajador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnInicio;
+    private javax.swing.JButton btnMenuprincipal;
     private javax.swing.JButton btnprocesar;
     private javax.swing.ButtonGroup grupo;
     private javax.swing.JLabel jLabel1;
