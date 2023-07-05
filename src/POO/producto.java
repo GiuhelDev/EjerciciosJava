@@ -73,11 +73,17 @@ public class producto extends javax.swing.JFrame {
         btnBuscar.setText("Buscar");
 
         btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         btneliminar.setText("Eliminar");
 
         btnModificar.setText("Modificar");
 
+        txtid.setForeground(new java.awt.Color(255, 255, 255));
         txtid.setText("001");
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -182,6 +188,25 @@ public class producto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+    
+        pr.setNombre(txtnombre.getText());
+        pr.setPrecio(Double.parseDouble(txtprecio.getText()));
+        pr.setCantidad(Integer.parseInt(txtcantidad.getText()));
+        dao.insertar(pr);
+        limpiarTabla();
+        listar();
+        txtnombre.setText("");
+        txtprecio.setText("");
+        txtcantidad.setText("");
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    void limpiarTabla(){
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            modelo.removeRow(i);
+            i=i-1;
+        }
+    }
     /**
      * @param args the command line arguments
      */
