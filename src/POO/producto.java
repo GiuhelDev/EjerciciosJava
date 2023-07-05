@@ -1,5 +1,6 @@
 package POO;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class producto extends javax.swing.JFrame {
@@ -193,12 +194,16 @@ public class producto extends javax.swing.JFrame {
         pr.setNombre(txtnombre.getText());
         pr.setPrecio(Double.parseDouble(txtprecio.getText()));
         pr.setCantidad(Integer.parseInt(txtcantidad.getText()));
-        dao.insertar(pr);
-        limpiarTabla();
-        listar();
-        txtnombre.setText("");
-        txtprecio.setText("");
-        txtcantidad.setText("");
+        if (dao.insertar(pr)) {
+            JOptionPane.showMessageDialog(rootPane, "El Producto Fue Registrado");
+            limpiarTabla();
+            listar();
+            txtnombre.setText("");
+            txtprecio.setText("");
+            txtcantidad.setText("");
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Error al Registrar");
+        }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     void limpiarTabla(){
