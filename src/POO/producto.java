@@ -46,9 +46,9 @@ public class producto extends javax.swing.JFrame {
         btnRegistrar = new javax.swing.JButton();
         btneliminar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        txtid = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
+        txtId = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,7 +69,7 @@ public class producto extends javax.swing.JFrame {
         jLabel4.setText("Precio:");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setText("Cantidad:");
+        jLabel5.setText("ID:");
 
         btnBuscar.setText("Buscar");
 
@@ -83,9 +83,11 @@ public class producto extends javax.swing.JFrame {
         btneliminar.setText("Eliminar");
 
         btnModificar.setText("Modificar");
-
-        txtid.setForeground(new java.awt.Color(255, 255, 255));
-        txtid.setText("001");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,6 +97,11 @@ public class producto extends javax.swing.JFrame {
                 "ID", "Nombre", "Precio", "Cantidad"
             }
         ));
+        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabla);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -126,7 +133,7 @@ public class producto extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnModificar))
                                     .addComponent(btneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(txtid))
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
@@ -169,7 +176,7 @@ public class producto extends javax.swing.JFrame {
                         .addGap(44, 44, 44)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(txtid))))
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(24, Short.MAX_VALUE))
@@ -205,6 +212,38 @@ public class producto extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Error al Registrar");
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
+        int fila=tabla.getSelectedRow();
+        txtId.setText(tabla.getValueAt(fila, 0).toString());
+        txtnombre.setText(tabla.getValueAt(fila, 1).toString());
+        txtprecio.setText(tabla.getValueAt(fila, 2).toString());
+        txtcantidad.setText(tabla.getValueAt(fila, 3).toString());
+    }//GEN-LAST:event_tablaMouseClicked
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+        int fila=tabla.getSelectedRow();
+        if(fila==-1){
+            JOptionPane.showMessageDialog(rootPane, "Selecciona Una Fila");
+        }else{
+            pr.setId(Integer.parseInt(txtId.getText()));
+            pr.setNombre(txtnombre.getText());
+            pr.setPrecio(Double.parseDouble(txtprecio.getText()));
+            pr.setCantidad(Integer.parseInt(txtcantidad.getText()));
+            if (dao.editar(pr)) {
+                JOptionPane.showMessageDialog(rootPane, "Se Modifico");
+                limpiarTabla();
+                listar();
+                txtId.setText("");
+                txtnombre.setText("");
+                txtprecio.setText("");
+                txtcantidad.setText("");
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Error al Modificar");
+            }
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     void limpiarTabla(){
         for (int i = 0; i < modelo.getRowCount(); i++) {
@@ -260,8 +299,8 @@ public class producto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla;
+    private javax.swing.JLabel txtId;
     private javax.swing.JTextField txtcantidad;
-    private javax.swing.JLabel txtid;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txtprecio;
     // End of variables declaration//GEN-END:variables

@@ -54,6 +54,26 @@ public class DaoProducto {
             JOptionPane.showConfirmDialog(null,e);
             return false;
         }
-        
+    }
+    public boolean editar (productos p){
+       String sql="update producto set nombre=?,precio=?,cantidad=?"+
+                " where id=?";
+        try {
+            con=cn.conectar();
+            ps=con.prepareStatement(sql);
+            ps.setString(1, p.getNombre());
+            ps.setDouble(2, p.getPrecio());
+            ps.setInt(3, p.getCantidad());
+            ps.setInt(4, p.getId());
+            int n=ps.executeUpdate();
+            if(n!=0){
+                return true;
+            }else{
+                return false;
+            }
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null,e);
+            return false;
+        }
     }
 }
