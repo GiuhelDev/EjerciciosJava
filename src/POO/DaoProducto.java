@@ -76,4 +76,24 @@ public class DaoProducto {
             return false;
         }
     }
+    public void bucar (productos p){
+       String sql="select * from producto where id=?";
+        try {
+            con=cn.conectar();
+            ps=con.prepareStatement(sql);
+            ps.setInt(1, p.getId());
+            rs=ps.executeQuery();
+            if(rs.next()){
+                p.setId(rs.getInt(1));
+                p.setNombre(rs.getString(2));
+                p.setPrecio(rs.getDouble(3));
+                p.setCantidad(rs.getInt(4));
+            }else{
+                JOptionPane.showMessageDialog(null, "No"
+                        + "exite el producto");
+            }
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null,e);
+        }
+    }
 }
