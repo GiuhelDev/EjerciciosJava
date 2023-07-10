@@ -96,4 +96,22 @@ public class DaoProducto {
             JOptionPane.showConfirmDialog(null,e);
         }
     }
+    public boolean eliminar (productos p){
+        String sql = "delete from producto where id=?";
+        try {
+            con=cn.conectar();
+            ps=con.prepareStatement(sql);
+            ps.setInt(1, p.getId());
+            int n=ps.executeUpdate();
+            if(n!=0){
+                return true;
+            }else{
+                return false;
+            }
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null,e);
+            return false;
+        }
+        
+    }
 }

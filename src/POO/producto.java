@@ -86,6 +86,11 @@ public class producto extends javax.swing.JFrame {
         });
 
         btneliminar.setText("Eliminar");
+        btneliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneliminarActionPerformed(evt);
+            }
+        });
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -257,6 +262,24 @@ public class producto extends javax.swing.JFrame {
         txtprecio.setText(pr.getPrecio()+"");
         txtcantidad.setText(pr.getCantidad()+"");
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
+        // TODO add your handling code here:
+        if (!txtId.getText().equals("")) {
+            int confirmacion = JOptionPane.showConfirmDialog(rootPane, 
+                    "¿Estas Seguro de ELiminar El Producto?","Confirmar",2);
+            if (confirmacion == 0) {
+                pr.setId(Integer.parseInt(txtId.getText()));
+                dao.eliminar(pr);
+                limpiarTabla();
+                listar();
+                txtId.setText("");
+                txtnombre.setText("");
+                txtprecio.setText("");
+                txtcantidad.setText("");
+            }
+        }
+    }//GEN-LAST:event_btneliminarActionPerformed
 
     void limpiarTabla(){
         for (int i = 0; i < modelo.getRowCount(); i++) {
